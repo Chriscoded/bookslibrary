@@ -6,6 +6,7 @@ use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Http\Resources\AuthorsResource;
 use App\Http\Requests\AuthorsRequest;
+use Response;
 
 class AuthorsController extends Controller
 {
@@ -41,7 +42,7 @@ class AuthorsController extends Controller
         $faker =\Faker\Factory::create(1); 
         //insert it in name field in author database
         $author = Author::create([
-            'name' => $faker->name
+            'name' => $request->name
         ]);
         return new AuthorsResource($author);
     }
